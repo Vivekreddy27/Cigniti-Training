@@ -1,0 +1,99 @@
+import java.util.Scanner;
+
+class Book {
+    private int bookNo;
+    private String title;
+    private String author;
+    private float price;
+
+    public Book(int bookNo, String title, String author, float price) {
+        if (title.length() < 4) {
+            System.out.println("Error: Title must have at least 4 characters.");
+            return;
+        }
+        if (price < 1 || price > 5000) {
+            System.out.println("Error: Price must be in the range 1 to 5000.");
+            return;
+        }
+        
+        this.bookNo = bookNo;
+        this.title = title;
+        this.author = author;
+        this.price = price;
+    }
+
+    // Getter and Setter methods for bookNo
+    public int getBookNo() {
+        return bookNo;
+    }
+
+    public void setBookNo(int bookNo) {
+        this.bookNo = bookNo;
+    }
+
+    // Getter and Setter methods for title
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    // Getter and Setter methods for author
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    // Getter and Setter methods for price
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    // Override toString() method to print book details
+    @Override
+    public String toString() {
+        return "Book Number: " + bookNo + "\nTitle: " + title + "\nAuthor: " + author + "\nPrice: $" + price;
+    }
+}
+
+public class BookDetails1 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Read inputs for the Book object
+        System.out.print("Enter Book Number: ");
+        int bookNo = scanner.nextInt();
+
+        scanner.nextLine(); // Consume newline
+        System.out.print("Enter Title: ");
+        String title = scanner.nextLine();
+
+        System.out.print("Enter Author: ");
+        String author = scanner.nextLine();
+
+        System.out.print("Enter Price: ");
+        float price = scanner.nextFloat();
+
+        // Create a Book object with validation
+        Book book = new Book(bookNo, title, author, price);
+
+        // Check if the Book object was created successfully
+        if (book != null) {
+            // Display the Book details using toString() method
+            System.out.println("\nBook Details:");
+            System.out.println(book.toString());
+        }
+
+        // Close the scanner
+        scanner.close();
+    }
+}
